@@ -1,31 +1,25 @@
-
-/**
- * SeLinkList
- */
 public class SeLinkList {
-    public class Node {
-    public int data;
-    public Node nxt;
-    Node(int value){
-         this.data = value; 
+    public SeLinkList next;
+    public int a;
+    public int b;
+    public int c;
+    public SeLinkList(int a,int b,int c){
+        this.a=a;
+        this.b=b;
+        this.c=c;
+        this.next=null;
     }
-    public Node(int val,Node nxt) { 
-        this.data = val; 
-        this.nxt = nxt; 
-    }   
-    }
-    public static void main(String[] args) {
-        SeLinkList LL=new SeLinkList();
-        SeLinkList.Node head=LL.new Node(1);
-        head.nxt=new SeLinkList().new Node(3);
-        head.nxt.nxt=new SeLinkList().new Node(6);
-        head.nxt.nxt.nxt=new SeLinkList().new Node(2);
-        head.nxt.nxt.nxt.nxt=new SeLinkList().new Node(5);
-        SeLinkList.Node ptr=head;
+    public static void main(String[] args){
+        SeLinkList fst=new SeLinkList(4, 7, 5);
+        SeLinkList scnd=new SeLinkList(7, 11, 65);
+        fst.next=scnd;
+        SeLinkList thrd=new SeLinkList(9, 2, 21);
+        scnd.next=thrd;
+        SeLinkList ptr = fst;
         while(ptr!=null){
-            System.out.print(ptr.data+" ");
-            ptr=ptr.nxt;
+            System.out.println(ptr.a+" "+ptr.b+" "+ptr.c);
+            ptr = ptr.next;
         }
-        
+
     }
 }
