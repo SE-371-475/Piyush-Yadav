@@ -13,10 +13,10 @@ public class Player {
         head=LL; 
         numPlayers=numPlayers+1;
     }
-    public void findMaxWeight(){
+    public SeLinkList  findMaxWeight(){
         if(head==null){
             System.out.println("Empty linked list");
-            return;
+            return null;
         }
         SeLinkList ptr=head.next,node=head;
         int Maxi=head.a+head.b+head.c;
@@ -27,9 +27,25 @@ public class Player {
             }
             ptr = ptr.next;
         }
-
-        System.out.println("Nodes are: Index="+node.index+" a="+node.a+" b="+node.b+" c=" + node.c);
-        System.out.println("and Maximum Weight is: " + Maxi);
+        System.out.println("Maximum weight is:"+Maxi);
+        return node;
+    }
+    public SeLinkList findMinWeight(){
+        if(head==null){
+            System.out.println("Empty linked list");
+            return null;
+        }
+        SeLinkList ptr=head.next,node=head;
+        int mini=head.a+head.b+head.c;
+        while(ptr!=null) {
+            if(mini>(ptr.a+ptr.b+ptr.c)) {
+                mini=ptr.a+ptr.b+ptr.c;
+                node=ptr;
+            }
+            ptr = ptr.next;
+        }
+        System.out.println("Minimum weight is:"+mini);
+        return node;
     }
     public static void main(String[] args) {
         // System.out.println("Task4");
@@ -43,14 +59,17 @@ public class Player {
         System.out.println("Task9");
         Player P=new Player(5);
         P.addPlayer (4, 7, 5);
-        P.addPlayer(3, 6, 14 );
-        P.addPlayer(1, 11, 0 );
+        P.addPlayer(3,6, 14);
+        P.addPlayer(1, 11, 0);
         SeLinkList ptr =P.head;
         System.out.println("The number of players is:"+P.numPlayers);
         while(ptr!=null) {
             System.out.println("Index is " + ptr.index+", a is "+ptr.a+", b is "+ptr.b+" and c is "+ptr.c);            
             ptr= ptr.next;
         }
-        P.findMaxWeight();
+        SeLinkList minnode = P.findMinWeight();
+        System.out.println("Min Node: Index=" + minnode.index+" a="+minnode.a+" b="+minnode.b+" c="+minnode.c);
+        SeLinkList maxnode=P.findMaxWeight();
+        System.out.println("Max Node: Index=" + maxnode.index+" a="+maxnode.a+" b="+maxnode.b+" c="+maxnode.c);
     }
 }
