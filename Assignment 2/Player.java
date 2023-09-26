@@ -1,5 +1,6 @@
-import java.util.Scanner;
 
+import java.util.*;
+import java.io.*;
 public class Player {
     public int numPlayers;
     public SeLinkList head;
@@ -14,6 +15,7 @@ public class Player {
         head=LL;
         numPlayers=numPlayers+1;
     }
+
 
     public void removeNode(int i){
         if(head==null){
@@ -35,24 +37,31 @@ public class Player {
         if(ptr.next!=null) ptr.next.prev=ptr.prev;
          numPlayers=numPlayers-1;
     }
-
-    public void findMaxWeight(){
+    public SeLinkList[] findMinMaxWeight() {
         if(head==null){
             System.out.println("Empty linked list");
-            return;
+            return null;
         }
-        SeLinkList ptr=head.next,node=head;
-        int Maxi=head.a+head.b+head.c;
-        while(ptr!=null) {
-            if(Maxi<(ptr.a+ptr.b+ptr.c)) {
-                Maxi=ptr.a+ptr.b+ptr.c;
-                node=ptr;
+        SeLinkList ptr=head.next,minNode=head,maxNode=head;
+        int mini=head.a+head.b+head.c;
+        int Maxi=mini;
+        while(ptr!=null){
+            int w=ptr.a+ptr.b+ptr.c;
+            if(w<mini){
+                mini=w;
+                minNode=ptr;
             }
-            ptr = ptr.next;
-        }
+            if(w>Maxi){
+                Maxi=w;
+                maxNode=ptr;
+            }
+            ptr=ptr.next;
+        }   
+        System.out.println("Minimum weight is: "+mini);
+        System.out.println("Maximum weight is: "+Maxi);
 
-        System.out.println("Nodes are: Index="+node.index+" a="+node.a+" b="+node.b+" c=" + node.c);
-        System.out.println("and Maximum Weight is: " + Maxi);
+        SeLinkList[] result = {minNode,maxNode};
+        return result;
     }
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
@@ -84,5 +93,10 @@ public class Player {
             System.out.println("a is "+ptr.a+", b is "+ptr.b +" and c is " + ptr.c);
             ptr=ptr.next;
         }
+
+        SeLinkList[] res=P.findMinMaxWeight();
+        System.out.println("Min Node: Index="+res[0].index+" a="+res[0].a+" b="+res[0].b+" c=" + res[0].c);
+        System.out.println("Max Node: Index="+res[1].index+" a="+res[1].a+" b="+res[1].b+" c=" +res[1].c);
+
     }
 }
