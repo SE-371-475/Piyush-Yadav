@@ -47,6 +47,7 @@ public class Player {
         P.addPlayer(1, 11, 0 );
         SeLinkList ptr =P.head;
         System.out.println("The number of players is:"+P.numPlayers);
+        
         while(ptr!=null) {
             System.out.println("Index is " + ptr.index+", a is "+ptr.a+", b is "+ptr.b+" and c is "+ptr.c);            
             ptr= ptr.next;
