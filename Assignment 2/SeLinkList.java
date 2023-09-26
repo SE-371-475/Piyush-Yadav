@@ -1,23 +1,23 @@
+
 public class SeLinkList {
     public SeLinkList next;
-    public int a;
-    public int b;
-    public int c;
-    public SeLinkList(int a,int b,int c){
+    public int a,b,c,index;
+    public SeLinkList(int a,int b,int c,int i){
         this.a=a;
         this.b=b;
         this.c=c;
+        this.index=i;
         this.next=null;
     }
     public static void main(String[] args){
-        SeLinkList fst=new SeLinkList(4, 7, 5);
-        SeLinkList scnd=new SeLinkList(7, 11, 65);
+        SeLinkList fst=new SeLinkList(4, 7, 5,0);
+        SeLinkList scnd=new SeLinkList(7, 11, 65,1);
         fst.next=scnd;
-        SeLinkList thrd=new SeLinkList(9, 2, 21);
+        SeLinkList thrd=new SeLinkList(9, 2, 21,2);
         scnd.next=thrd;
         SeLinkList ptr = fst;
         while(ptr!=null){
-            System.out.println(ptr.a+" "+ptr.b+" "+ptr.c);
+            System.out.println("a: "+ptr.a+", b: "+ptr.b+", c: "+ptr.c+", index: "+ptr.index);
             ptr = ptr.next;
         }
 
