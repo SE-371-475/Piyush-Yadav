@@ -1,5 +1,5 @@
-import java.util.*;
-public class Main {
+import java.util.Scanner;
+public class Main1 {
 
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
@@ -14,7 +14,8 @@ public class Main {
             f0=f1;
             f1=res;
         }
-        System.out.println(res);
+        System.out.println("The "+N+"th fibonacci number is: "+res);
       }
+      sc.close();
     }
 }

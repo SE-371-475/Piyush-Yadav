@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class SeLinkList {
     public SeLinkList next,prev;
@@ -11,18 +12,33 @@ public class SeLinkList {
         this.prev=null;
     }
     public static void main(String[] args){
-        SeLinkList fst=new SeLinkList(4, 7, 5,0);
-        SeLinkList scnd=new SeLinkList(7, 11, 65,1);
-        fst.next=scnd;
-        scnd.prev=fst;
-        SeLinkList thrd=new SeLinkList(9, 2, 21,2);
-        scnd.next=thrd;
-        thrd.prev=scnd;
-        SeLinkList ptr = fst;
-        while(ptr!=null){
-            System.out.println("a: "+ptr.a+", b: "+ptr.b+", c: "+ptr.c+", index: "+ptr.index);
-            ptr = ptr.next;
-        }
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the number of nodes that you want to add in the Linked list: ");
+        int n=sc.nextInt();
+        SeLinkList head=new SeLinkList(0,0,0,0);
+        SeLinkList ptr=new SeLinkList(0,0,0,0);
+        for(int i=0;i<n;i++){
+            System.out.println("Enter value "+(i+1)+" in [a b c] format:"); 
+            int a=sc.nextInt();
+            int b=sc.nextInt();
+            int c=sc.nextInt();
+            if(i==0){
+                head=new SeLinkList(a,b,c,n-i-1);
+                ptr=head;
+            }
+            else{
+                SeLinkList node=new SeLinkList(a,b,c,n-i-1);
+                ptr.next=node;
+                node.prev=ptr;
+                ptr=ptr.next;
+            }
 
+        }
+        SeLinkList curr=head;
+        while(curr!=null){
+            System.out.println("a: "+curr.a+", b: "+curr.b+", c: "+curr.c+", index: "+curr.index);
+            curr = curr.next;
+        }
+        sc.close();
     }
 }
