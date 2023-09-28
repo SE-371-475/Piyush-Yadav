@@ -12,7 +12,8 @@ public class PlayerData {
         this.c = dataC;
     }
 
-    PlayerData (){        myData = new PlayerData[] {
+    PlayerData (){
+        myData = new PlayerData[] {
             new PlayerData( 22, 9, 9 ),
             new PlayerData( 3, 26, 9 ),
             new PlayerData( 23, 24, 1 ),
@@ -22,7 +23,7 @@ public class PlayerData {
             new PlayerData( 3, 6, 14 ),
             new PlayerData( 10, 10, 11 ),
             new PlayerData( 5, 7, 22 ),
-            new PlayerData(),
+            new PlayerData( 1, 11, 0 ),
             new PlayerData( 26, 19, 24 ),
             new PlayerData( 5, 28, 9 ),
             new PlayerData( 6, 24, 17 ),
@@ -72,6 +73,7 @@ public class PlayerData {
         PlayerData playerData = new PlayerData();
 
         PlayerData[] myData = playerData.getMyData();
+
         System.out.print(myData);
         
     }

@@ -1,44 +1,42 @@
-import java.util.Scanner;
-
-public class SeLinkList {
-    public SeLinkList next,prev;
-    public int a,b,c,index;
-    public SeLinkList(int a,int b,int c,int i){
-        this.a=a;
-        this.b=b;
-        this.c=c;
-        this.index=i;
-        this.next=null;
-        this.prev=null;
-    }
-    public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Enter the number of nodes that you want to add in the Linked list: ");
-        int n=sc.nextInt();
-        SeLinkList head=new SeLinkList(0,0,0,0);
-        SeLinkList ptr=new SeLinkList(0,0,0,0);
-        for(int i=0;i<n;i++){
-            System.out.println("Enter value "+(i+1)+" in [a b c] format:"); 
-            int a=sc.nextInt();
-            int b=sc.nextInt();
-            int c=sc.nextInt();
-            if(i==0){
-                head=new SeLinkList(a,b,c,n-i-1);
-                ptr=head;
-            }
-            else{
-                SeLinkList node=new SeLinkList(a,b,c,n-i-1);
-                ptr.next=node;
-                node.prev=ptr;
-                ptr=ptr.next;
-            }
-
-        }
-        SeLinkList curr=head;
-        while(curr!=null){
-            System.out.println("a: "+curr.a+", b: "+curr.b+", c: "+curr.c+", index: "+curr.index);
-            curr = curr.next;
-        }
-        sc.close();
-    }
-}
+public class SeLinkList{     
+    private int currInd=0;
+    public Node ptr=null,head=null;     
+    public class Node{    
+        Node prev,nxt;    
+        int index,a,b,c;  
+        public Node(int i,int a,int b,int c){    
+            this.a=a;
+            this.b=b;
+            this.c=c; 
+            this.index=i;  
+            this.prev=null; 
+            this.nxt=null;    
+        }    
+    }      
+    public static void main(String[] args){    
+        SeLinkList LL = new SeLinkList();   
+        System.out.println("Task 3 tested Done"); 
+        LL.addNode(8,5,2);    
+        LL.addNode(8,8,3);    
+        LL.addNode(5,7,1);    
+        LL.addNode(6,3,1);  
+        Node ptr=LL.head;
+        while(ptr!=null){
+            System.out.println("a: "+ptr.a+" ,b: "+ptr.b+" ,c: "+ptr.c);
+            ptr=ptr.nxt;
+        }  
+        System.out.println("Task 11 tested and Done"); 
+    }    
+    public void addNode(int a,int b,int c){    
+        Node temp=new Node(currInd++,a,b,c);    
+        if(head!=null){  
+            temp.prev=ptr;
+            ptr.nxt=temp;    
+            ptr=temp;    
+              
+        }else{     
+            ptr=temp;   
+            head=temp;    
+        }    
+    }     
+}  
